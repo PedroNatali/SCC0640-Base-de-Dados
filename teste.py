@@ -167,7 +167,7 @@ def insert(tabela, conteudo):
     # tentar executar o comando
     try:
         cursor.execute(query)
-        resultado = 1
+        resultado = 0
 
     #Exibe erro
     except Exception as erro:
@@ -175,7 +175,7 @@ def insert(tabela, conteudo):
         print("ERRO: ")
         print("")
         print(str(erro))
-        resultado = -1  
+        resultado = 1  
 
     # formatar esse resultado
     return resultado
@@ -204,7 +204,7 @@ def delete(tabela, colunas, valores):
     #tenta executar o comando
     try:
         cursor.execute(query)
-        resultado = 1
+        resultado = 0
 
     #Exibe erro
     except Exception as erro:
@@ -212,7 +212,7 @@ def delete(tabela, colunas, valores):
         print("ERRO: ")
         print("")
         print(str(erro))
-        resultado = -1 
+        resultado = 1 
 
     # formatar esse resultado
     return resultado
@@ -261,7 +261,7 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
     #tenta executar o comando
     try:
         cursor.execute(query)
-        resultado = 1
+        resultado = 0
 
     #exibe erro
     except Exception as error:
@@ -269,7 +269,7 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
         print("ERRO: ")
         print("")
         print(str(error))
-        resultado = -1  # deu errado, alertar no site
+        resultado = 1  # deu errado, alertar no site
 
     # formatar esse resultado
     return resultado
