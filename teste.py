@@ -288,16 +288,16 @@ def main():
 
     #Inicializando as tabelas
     print("Cria as tabelas do banco...")
-    executeSQL('initialize.sql')
+    executeSQL('esquema-gamexp.sql')
 
     #Popula o Banco com tuplas
-    print("Populando o banco de dados com tuplas iniciais...")
-    executeSQL('insert.sql')
+    # print("Populando o banco de dados com tuplas iniciais...")
+    # executeSQL('insert.sql')
 
     # abrir interface gráfica
     print("Abrindo a interface gráfica...")
 
-    eel.init('web')
+    eel.init('interface')
     #OPEN(INTERFACE)
     try:
         eel.start('index.html', mode = "chrome-app", port = 8000, chromeFlags = ["--incognito"])
