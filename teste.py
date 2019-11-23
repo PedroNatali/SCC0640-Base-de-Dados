@@ -4,37 +4,37 @@ try:
     import eel
 except Exception as e:
     print(e)
-    print("Pacotes necessários não encontrados, execute o comando a seguir: ")
+    print("Pacotes necessarios nao encontrados, execute o comando a seguir: ")
     print("pip install -r requirements.txt")
 
-# variaveis de conexão ao banco de dados
+# variaveis de conexao ao banco de dados
 connection = None
 cursor = None
 
-#Criando a Conexão SQL - só haverá interface com o banco a partir deste código
+#Criando a Conexao SQL - so havera interface com o banco a partir deste codigo
 def connect():
     global connection
     global cursor
 
     try:
-        #define os parâmetros
+        #define os parametros
         print('Conectando no PostgreSQL...')
         connection = psycopg2.connect(host = 'localhost', database = 'postgres',
         user = 'postgres', password = 'matheus123')
 
-        #define o autocomit
+        #define o autocommit
         connection.autocommit = True
 
         #cria o cursor 
         cursor = connection.cursor()
 
-        #Se for bem sucedida, a conexão, mostrar a versão
+        #Se for bem sucedida, a conexao, mostrar a versao
         cursor.execute('SELECT version()')
-        print("Conexão feita com sucesso")
+        print("Conexao feita com sucesso")
         return connection, cursor
 
     except (Exception, psycopg2.DatabaseError) as error:
-        print(" Conexão do PostgreSQL não foi concluida!")
+        print(" Conexao do PostgreSQL nao foi concluida!")
         print("")
         print(str(error))
         sys.exit()
@@ -66,7 +66,7 @@ def executeSQL(filename):
             #Tente executar o comando
             try:
                 cursor.execute(comando)
-            #Se não for possível, printe o erro
+            #Se nao for possivel, printe o erro
             except(Exception, psycopg2.DatabaseError) as error:
                 print('\n' + "ERRO: " + comando)
                 print('\n' + str(error))
@@ -87,11 +87,11 @@ def select(tabela, colunas):
 
     cont_colunas = " "
     for nro, valor in nro_cont_colunas:
-        #Se não for a última das colunas
+        #Se nao for a ultima das colunas
         if (nro < tam_colunas - 1):
             #adiciona o valor ao conteudo das colunas separado por virgula
             cont_colunas = cont_colunas + str(valor) + ","
-        #Se for a última das colunas
+        #Se for a ultima das colunas
         else:
             cont_colunas = cont_colunas + str(valor)
 
@@ -119,7 +119,7 @@ def select(tabela, colunas):
         return resultados
 
     except Exception as erro:
-        # caso SELECT dê erro, exibir erro e retornar lista vazia
+        # caso SELECT de erro, exibir erro e retornar lista vazia
         print("ERRO: ")
         print("")
         print(str(erro))
@@ -142,11 +142,11 @@ def insert(tabela, conteudo):
 
     valor_conteudo = " "
     for nro, valor in nro_valor_conteudo:
-        #Se não for último
+        #Se nao for ultimo
         if (nro < tam_conteudo - 1):
             #adiciona o valor separado por virgula
             valor_conteudo = valor_conteudo + "'" + str(valor) + "'" + ", "
-        #Se for a última 
+        #Se for a ultima 
         else:
             valor_conteudo = valor_conteudo + "'" + str(valor) + "'"
 
@@ -184,7 +184,7 @@ def delete(tabela, colunas, valores):
     #atribui a variavel nro_valor um numero da coluna com seu respectivo valor
     nro_valor_colunas = enumerate(colunas)
 
-    # caso haja mais de uma condição, adicioná-las
+    # caso haja mais de uma condicao, adiciona-las
     if (tam_colunas > 1):
         for nro, valor in nro_valor_colunas:
             if (nro > 0):
@@ -224,9 +224,9 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
 
     #percorre tudo
     for nro, valor in nro_valor_coluna:
-        #se não chegou no último
+        #se nao chegou no ultimo
         if (nro < tam_coluna - 1):
-            #adiciona o valor a variável de mudanças
+            #adiciona o valor a variavel de mudancas
             mudancas = mudancas + str(coluna[nro]) + "=" + "'" + str(valor[nro]) + "'" + ", "
         #se chegou
         else:
@@ -242,7 +242,7 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
 
     nro_valor_colCondicao = enumerate(col_condicao, start=1)
 
-    # caso haja mais de uma condição
+    # caso haja mais de uma condicao
     if (tam_col_condicao > 1):
         for nro, valor in nro_valor_colCondicao:
             query += " AND " + str(col_condicao[nro]) + "=" + "'" + str(val_condicao[nro]) + "'"
@@ -271,7 +271,7 @@ def main():
     # conectar ao banco de dados
     connection, cursor = connect()
     
-    #dropar todas as tabelas para que não haja problemas 
+    #dropar todas as tabelas para que nao haja problemas 
     print("Drop nas tabelas do banco...")
     executeSQL('drop.sql')
 
@@ -283,8 +283,8 @@ def main():
     # print("Populando o banco de dados com tuplas iniciais...")
     # executeSQL('insert.sql')
 
-    # abrir interface gráfica
-    print("Abrindo a interface gráfica...")
+    # abrir interface grafica
+    print("Abrindo a interface grafica...")
 
     eel.init('interface')
     #OPEN(INTERFACE)
@@ -293,7 +293,8 @@ def main():
     except (Exception) as e:
         print('\n' + "Erro: " + str(e))
 
-    # fechar conexão com o banco ao terminar
+    # fechar conexao com o banco ao terminar
+    print("Conexão fechada")
     cursor.close()
 
 

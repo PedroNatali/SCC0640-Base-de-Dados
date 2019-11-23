@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>GameXP - Art Street</title>
   <meta charset="utf-8">
@@ -11,135 +12,197 @@
 
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 1500px}
-    
+    .row.content {
+      height: 1500px
+    }
+
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #f1f1f1;
       height: 100%;
     }
-    
+
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
     }
-    
+
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+
+      .row.content {
+        height: auto;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <h4>Art Street </h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li ><a href="index.html">Home</a></li>
-        <li class="active"><a href="grupo.html">Grupo Artístico</a></li>
-        <!-- <li><a href="#section3">Family</a></li>
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h4>Art Street </h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="grupo.html">Grupo Artístico</a></li>
+          <!-- <li><a href="#section3">Family</a></li>
         <li><a href="#section3">Photos</a></li> -->
-      </ul><br>
-    </div>
-
-    <div class="col-sm-9">
-      <h4><small>Consultas, Inserções e Remoções em Grupo Artístico</small></h4>
-      <hr>
-      <div>
-        <h2>Inserção</h2>
-        <hr>
-        <form  onsubmit="insert_tuplas()">
-            <div class="form-group">
-            <label for="nome"></label>
-            <input id="nome_grupo" required type="nome" class="forms form-control" id="nome_cadastro" placeholder="nome artistico" name="nome">
-
-            <label for="email"></label>
-            <input id="email_grupo" required type="email" class="forms form-control" id="email_cadastro" placeholder="e-mail" name="e-mail">
-
-            <label for="descricao"></label>
-            <input id="descricao_grupo" required type="text" class="forms form-control" id="descricao_cadastro" placeholder="breve descricao" name="descricao">
-
-            <label for="qtd_artista"></label>
-            <input id="qtd_grupo"  required type="number" class="forms form-control" id="qtd_cadastro" placeholder="qtd de aristas" name="qtd_artista">
-
-            <label for="facebook"></label>
-            <input id="facebook_grupo"  type="url" class="forms form-control" id="fb_cadastro" placeholder="facebook" name="facebook">
-
-            <label for="instagram"></label>
-            <input id="instagram_grupo" type="url" class="forms form-control" id="ig_cadastro" placeholder="instagram" name="instagram">
-
-            <label for="twitter"></label>
-            <input id="twitter_grupo"  type="url" class="forms form-control" id="tt_cadastro" placeholder="twitter" name="twitter">
-
-            <label for="foto"></label>
-            <input id="img_grupo" required type="url" class="forms form-control" id="img_cadastro" placeholder="foto" name="foto">
-
-            
-            
-            <button type="submit" >inserir</button>
-            </div>
-        </form>
-        <hr>
-        <h2>Remoção via Nome Artístico</h2>
-        <form  onsubmit="">
-            <div class="form-group">
-            <label for="nome"></label>
-            <input required type="nome" class="forms form-control" id="nome_cadastro" placeholder="nome artistico" name="nome">
-
-            </div>
-            
-            <button type="submit" >remover</button>
-        </form>
-        <hr>
-        <h2>Consulta</h2>
-        <button>listar</button>
+        </ul><br>
       </div>
 
-     
+      <div class="col-sm-9">
+        <h4><small>Consultas, Inserções e Remoções em Grupo Artístico</small></h4>
+        <hr>
+        <div>
+          <h2>Inserção</h2>
+          <hr>
+          <form onsubmit="insert_tuplas()">
+            <div class="form-group">
+              <label for="nome"></label>
+              <input id="nome_grupo" required type="nome" class="forms form-control" id="nome_cadastro"
+                placeholder="nome artistico" name="nome">
+
+              <label for="email"></label>
+              <input id="email_grupo" required type="email" class="forms form-control" id="email_cadastro"
+                placeholder="e-mail" name="e-mail">
+
+              <label for="descricao"></label>
+              <input id="descricao_grupo" required type="text" class="forms form-control" id="descricao_cadastro"
+                placeholder="breve descricao" name="descricao">
+
+              <label for="qtd_artista"></label>
+              <input id="qtd_grupo" required type="number" class="forms form-control" id="qtd_cadastro"
+                placeholder="qtd de aristas" name="qtd_artista">
+
+              <label for="facebook"></label>
+              <input id="facebook_grupo" type="url" class="forms form-control" id="fb_cadastro" placeholder="facebook"
+                name="facebook">
+
+              <label for="instagram"></label>
+              <input id="instagram_grupo" type="url" class="forms form-control" id="ig_cadastro" placeholder="instagram"
+                name="instagram">
+
+              <label for="twitter"></label>
+              <input id="twitter_grupo" type="url" class="forms form-control" id="tt_cadastro" placeholder="twitter"
+                name="twitter">
+
+              <label for="foto"></label>
+              <input id="img_grupo" required type="url" class="forms form-control" id="img_cadastro" placeholder="foto"
+                name="foto">
 
 
-      
-      
+
+              <button type="submit">inserir</button>
+            </div>
+          </form>
+          <hr>
+          <h2>Remoção via Nome Artístico</h2>
+          <form onsubmit="delete_tuplas()">
+            <div class="form-group">
+              <label for="nome"></label>
+              <input id="nome_delete_grupo" required type="nome" class="forms form-control" id="nome_cadastro"
+                placeholder="nome artistico" name="nome">
+            </div>
+            <button type="submit">remover</button>
+          </form>
+          <hr>
+          <h2>Consulta</h2>
+          <button onclick="get_tuplas()">listar</button>
+          <table id="table">
+              <thead>
+                  <th>Nome Artístico</th>
+                  <th> Breve Descrição </th>
+                  <th> Facebook </th>
+                  <th> Instagram</th>
+                  <th> Twitter</th>
+                  <th> E-mail</th>
+                  <th> Quantidade de Artistas</th>
+                  <th> Foto (url)</th>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+      </div>
     </div>
   </div>
-</div>
 
-<footer class="container-fluid">
-  <p>Projeto 3 - GameXP. Realizado por Pedro Natali, Matheus Arataque, Samira Mendes e Nelson Neto</p>
-</footer>
+  <footer class="container-fluid">
+    <p>Projeto 3 - GameXP. Realizado por Pedro Natali, Matheus Arataque, Samira Mendes e Nelson Neto</p>
+  </footer>
 
 </body>
 <script>
-  async function insert_tuplas(){
+  async function get_tuplas() {
+    columns = ["NOME_ARTISTICO", "BREVE_DESCRICAO", "FACEBOOK",
+    "INSTAGRAM", "TWITTER", "EMAIL", "QUANTIDADE_ARTISTA",
+    "FOTO"];
+    let array = await eel.select("GRUPO_ARTISTICO", columns)();
+    // return clientes
+    let table = document.getElementById("table");
 
-  let name = document.getElementById("nome_grupo").value;
-  let email = document.getElementById("email_grupo").value;
-  let desc = document.getElementById("descricao_grupo").value;
-  let qtd = document.getElementById("qtd_grupo").value;
-  let facebook =  document.getElementById("facebook_grupo").value;
-  facebook = true ? facebook : 'null';
-  let instagram = document.getElementById("instagram_grupo").value;
-  instagram = true ? instagram : 'null';
-  let twitter = document.getElementById("twitter_grupo").value;
-  twitter = true ? twitter : 'null';
-  let foto = document.getElementById("img_grupo").value;
-
-  values = [name, desc, facebook, instagram, twitter, email, qtd, foto];
-  alert(values);
-  let success = await eel.insert("GRUPO_ARTISTICO", values)();
-  alert(success);
-  if(success == 1){
-    alert("Erro ao inserir o novo registro, tente novamente");
+    if (array.length > 0) {
+      for (var i = 0; i < array.length; i++) {
+        // create a new row
+        var newRow = table.insertRow(table.length);
+        for (var j = 0; j < 1; j++) {
+          // create a new cell
+          var cell = newRow.insertCell(j);
+          // add value to the cell
+          cell.innerHTML = array[i];
+        }
+      }
+    } else {
+      alert("Não há dados armazenados");
+    }
   }
-}
+  async function delete_tuplas() {
+    let name_delete = document.getElementById("nome_delete_grupo").value;
 
+    coluna = ["NOME_ARTISTICO"];
+    valor = [name_delete];
+    // alert("foi ate aq");
+    let success = await eel.delete("GRUPO_ARTISTICO", coluna, valor)();
+    // alert("chegou aq");
+    if (success == 1) {
+      alert("Erro ao deletar o registro, tente novamente");
+    }
+  }
+  async function insert_tuplas() {
+
+    let name = document.getElementById("nome_grupo").value;
+    let email = document.getElementById("email_grupo").value;
+    let desc = document.getElementById("descricao_grupo").value;
+    let qtd = document.getElementById("qtd_grupo").value;
+    let facebook = document.getElementById("facebook_grupo").value;
+    facebook = true ? facebook : 'null';
+    let instagram = document.getElementById("instagram_grupo").value;
+    instagram = true ? instagram : 'null';
+    let twitter = document.getElementById("twitter_grupo").value;
+    twitter = true ? twitter : 'null';
+    let foto = document.getElementById("img_grupo").value;
+
+    values = [name, desc, facebook, instagram, twitter, email, qtd, foto];
+    // alert(values);
+    let success = await eel.insert("GRUPO_ARTISTICO", values)();
+    // alert(success);
+    if (success == 1) {
+      alert("Erro ao inserir o novo registro, tente novamente");
+    }
+  }
 </script>
+
 </html>
