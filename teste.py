@@ -300,6 +300,10 @@ def main():
 
 
     #OPEN(INTERFACE)
+    try:
+        eel.start('index.html', 'mode': "chrome-app", 'port':8000, 'chromeFlags':["--incognito"])
+    except (Exception) as e:
+        print('\n' + "Erro: " + str(e))
 
     # fechar conexão com o banco ao terminar
     cursor.close()
