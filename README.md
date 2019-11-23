@@ -4,7 +4,7 @@ Trabalho desenvolvido durante a disciplinas de Base de Dados com o intuito de de
 
 Para executar o código são necessários alguns pré-requisitos:
 - PostGreSQL;
-- Python com pip;
+- Python com pip.
 
 Com os requisitos acima presentes, instale as dependências na pasta do projeto:
 
