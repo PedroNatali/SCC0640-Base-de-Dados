@@ -1,36 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@MatheusUema 
-1
-00PedroNatali/SCC0640-Base-de-Dados
- Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights
-SCC0640-Base-de-Dados/teste.py / 
- Pedro voltando
-32ced18 1 hour ago
-312 lines (239 sloc)  8.14 KB
- 
-Code navigation is available!
-Navigate your code with ease. Click on function and method calls to jump to their definitions or references in the same repository. Learn more
-
- You're using jump to definition to discover and navigate code.
-Learn more or give us feedback
-#!/bin/usr/env python3
-# -*- coding: utf-8 -*-
-#Código para o trabalho da Disciplina de Base de Dados 
-
-#Authors
-    #Pedro Natali
-    #Samira Mendes
-    #Matheus Uema
-    #Nelson Neto
-
-#Importa as bibliotecas necessarias
 try:
     import psycopg2
     import sys
