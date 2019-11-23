@@ -94,11 +94,10 @@ def select(tabela, colunas):
     tam_colunas = len(colunas)
 
     #numero das colunas
-    nro_cont_colunas = enumerate(colunas)
-
+    nro_cont_colunas = enumerate(colunas) 
 
     cont_colunas = " "
-    for nro, valor in nro_valor_colunas
+    for nro, valor in nro_cont_colunas:
         #Se não for a última das colunas
         if (nro < tam_colunas - 1):
             #adiciona o valor ao conteudo das colunas separado por virgula
@@ -123,7 +122,7 @@ def select(tabela, colunas):
         #Para cada valor em resultado, inserir na variavel de resultados, separando por virgula
         for valor in resultado:
             resultados.append(str(valor))
-            print(valor, end=", ")
+            print(valor +  ', ')
 
         print("\n")
 
@@ -153,7 +152,7 @@ def insert(tabela, conteudo):
 
 
     valor_conteudo = " "
-    for nro, valor in nro_valor_conteudo
+    for nro, valor in nro_valor_conteudo:
         #Se não for último
         if (nro < tam_conteudo - 1):
             #adiciona o valor separado por virgula
@@ -301,7 +300,7 @@ def main():
 
     #OPEN(INTERFACE)
     try:
-        eel.start('index.html', 'mode': "chrome-app", 'port':8000, 'chromeFlags':["--incognito"])
+        eel.start('index.html', mode = "chrome-app", port = 8000, chromeFlags = ["--incognito"])
     except (Exception) as e:
         print('\n' + "Erro: " + str(e))
 
