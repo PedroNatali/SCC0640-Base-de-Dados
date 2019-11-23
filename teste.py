@@ -123,7 +123,7 @@ def select(tabela, colunas):
         #Para cada valor em resultado, inserir na variavel de resultados, separando por virgula
         for valor in resultado:
             resultados.append(str(valor))
-            print(value, end=", ")
+            print(valor, end=", ")
 
         print("\n")
 
@@ -298,7 +298,7 @@ def main():
     # abrir interface gráfica
     print("Abrindo a interface gráfica...")
 
-    
+
     #OPEN(INTERFACE)
 
     # fechar conexão com o banco ao terminar
