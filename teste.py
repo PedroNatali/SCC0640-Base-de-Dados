@@ -297,7 +297,7 @@ def main():
     # abrir interface gráfica
     print("Abrindo a interface gráfica...")
 
-
+    eel.init('web')
     #OPEN(INTERFACE)
     try:
         eel.start('index.html', mode = "chrome-app", port = 8000, chromeFlags = ["--incognito"])
