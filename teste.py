@@ -11,6 +11,7 @@
 #Importa as bibliotecas necessarias
 try:
     import psycopg2
+    import sys
 except Exception as e:
     print(e)
     print("Pacotes não instalados.")
@@ -21,16 +22,36 @@ except Exception as e:
 connection = None
 cursor = None
 
+def run_sql(filename):
+    global connection
+    global cursor
+
+    file = open(filename, 'r')
+    sql = file.read()
+    file.close
+
+    print("Executando..")
+
+    commands = sql.split(';')
+
+    for command in commands[:-1]:
+        if (len(command) > 0):
+            command = command + ';'
+            try:
+                cursor.execute(command)
+            except(Exception, psycopg2.DatabaseError) as error:
+                print('\n' + "ERRO: " + command)
+                print('\n' + str(error))
 
 #Criando a Conexão SQL
-def connection()
+def connect():
 	global connection
 	global cursor
 
 	try:
 		#define os parâmetros
 		print('Conectando no PostgreSQL...')
-		connection = psycopg2.connect(host = 'localhost', database = 'gamexp',
+		connection = psycopg2.connect(host = 'localhost', database = 'postgres',
 		user = 'postgres', password = 'matheus123')
 
 		#define o autocomit
