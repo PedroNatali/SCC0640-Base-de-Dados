@@ -98,7 +98,7 @@ def select(tabela, colunas):
 
 
     cont_colunas = " "
-    for nro, valor in nro_valor_colunas
+    for nro, valor in nro_valor_colunas:
         #Se não for a última das colunas
         if (nro < tam_colunas - 1):
             #adiciona o valor ao conteudo das colunas separado por virgula
@@ -289,11 +289,10 @@ def main():
 
     #Inicializando as tabelas
     print("Cria as tabelas do banco...")
-    executeSQL('initialize.sql')
+    executeSQL('esquema-gamexp.sql')
 
     #Popula o Banco com tuplas
-    print("Populando o banco de dados com tuplas iniciais...")
-    executeSQL('insert.sql')
+
 
     # abrir interface gráfica
     print("Abrindo a interface gráfica...")
