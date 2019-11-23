@@ -6,7 +6,7 @@ Para executar o código são necessários alguns pré-requisitos:
 - PostGreSQL;
 - Python com pip;
 
-Com os requisitos acima presentes, instale as dependências:
+Com os requisitos acima presentes, instale as dependências na pasta do projeto:
 
 ```shell
 pip install --user -r requirements.txt
