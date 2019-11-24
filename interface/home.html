@@ -103,7 +103,7 @@
     const tabela = "ARTISTA";
     const condicao = "UPPER(ARTISTA.NOME) = '" + nome +"'";
     let results = await eel.simplesSelect(columns, tabela, condicao)();
-    alert(results[0].length)
+    alert(results)
 
     if (results == 1) {
       alert("Erro ao busca o registro, tente novamente");
