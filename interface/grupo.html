@@ -50,7 +50,7 @@
       <div class="col-sm-3 sidenav">
         <h4>Art Street </h4>
         <ul class="nav nav-pills nav-stacked">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="home.html">Home</a></li>
           <li class="active"><a href="grupo.html">Grupo Artístico</a></li>
           <!-- <li><a href="#section3">Family</a></li>
         <li><a href="#section3">Photos</a></li> -->
@@ -212,7 +212,7 @@
     let success = await eel.update("GRUPO_ARTISTICO", columns, values, coluna_condicao, valor_condicao)();
 
     //Retorno para sucesso ou erro
-    if (success == -1) {
+    if (success == 1) {
       alert("Erro ao atualizar o registro, tente novamente");
     } else {
       alert('Atualizado com sucesso!')

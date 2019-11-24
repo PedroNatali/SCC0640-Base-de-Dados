@@ -270,25 +270,28 @@ def simplesSelect(colunas, tabela, condicoes):
     
     col = ""
     nro_valor_coluna = enumerate(colunas)
-    tam_coluna = len(coluna)
+    tam_coluna = len(colunas)
     for nro,valor in nro_valor_coluna:
         if(nro < tam_coluna - 1):
             col = col + str(valor) +","
         else:
             col = col + str(valor)
 
-    query = "SELECT " + col + " FROM " + tabela + " WHERE " + condicoes
+    query = "SELECT " + col + " FROM " + tabela + " WHERE " + condicoes + ";"
+
 
     try:
         cursor.execute(query)
-        resultado = 0
+        resultado = cursor.fetchall()
+        print(resultado)
+
+        return resultado
     except Exception as error:
         print("ERRO: ")
         print("")
         print(str(error))
-        resultado = 1  # deu errado, alertar no site
 
-    return resultado
+        return error
 
 
 def main():
@@ -316,7 +319,7 @@ def main():
     eel.init('interface')
     #OPEN(INTERFACE)
     try:
-        eel.start('index.html', mode = "chrome-app", port = 8000, chromeFlags = ["--incognito"])
+        eel.start('home.html', mode = "chrome-app", port = 8000, chromeFlags = ["--incognito"])
     except (Exception) as e:
         print('\n' + "Erro: " + str(e))
 
