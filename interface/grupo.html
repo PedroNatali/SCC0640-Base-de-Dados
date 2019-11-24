@@ -79,7 +79,7 @@
 
               <label for="qtd_artista"></label>
               <input id="qtd_grupo" required type="number" class="forms form-control" id="qtd_cadastro"
-                placeholder="qtd de aristas" name="qtd_artista">
+                placeholder="qtd de artistas" name="qtd_artista">
 
               <label for="facebook"></label>
               <input id="facebook_grupo" type="url" class="forms form-control" id="fb_cadastro" placeholder="facebook"
@@ -104,6 +104,7 @@
           </form>
           <hr>
           <h2>Remoção via Nome Artístico</h2>
+          <hr>
           <form onsubmit="delete_tuplas()">
             <div class="form-group">
               <label for="nome"></label>
@@ -114,21 +115,52 @@
           </form>
           <hr>
           <h2>Consulta</h2>
-          <button onclick="get_tuplas()">listar</button>
+          <hr>
+          <button id="listar-button" onclick="get_tuplas()">listar</button>
           <table id="table">
-              <thead>
-                  <th>Nome Artístico</th>
-                  <th> Breve Descrição </th>
-                  <th> Facebook </th>
-                  <th> Instagram</th>
-                  <th> Twitter</th>
-                  <th> E-mail</th>
-                  <th> Quantidade de Artistas</th>
-                  <th> Foto (url)</th>
-              </thead>
-              <tbody>
-              </tbody>
           </table>
+          <hr>
+          <h2>Atualização</h2>
+          <hr>
+          <form onsubmit="atualiza_tuplas()">
+            <div class="form-group">
+              <label for="nome"></label>
+              <input id="nome_grupo_2" required type="nome" class="forms form-control" id="nome_cadastro"
+                placeholder="nome artistico" name="nome">
+
+              <label for="email"></label>
+              <input id="email_grupo_2" required type="email" class="forms form-control" id="email_cadastro"
+                placeholder="e-mail" name="e-mail">
+
+              <label for="descricao"></label>
+              <input id="descricao_grupo_2" required type="text" class="forms form-control" id="descricao_cadastro"
+                placeholder="breve descricao" name="descricao">
+
+              <label for="qtd_artista"></label>
+              <input id="qtd_grupo_2" required type="number" class="forms form-control" id="qtd_cadastro"
+                placeholder="qtd de artistas" name="qtd_artista">
+
+              <label for="facebook"></label>
+              <input id="facebook_grupo_2" type="url" class="forms form-control" id="fb_cadastro" placeholder="facebook"
+                name="facebook">
+
+              <label for="instagram"></label>
+              <input id="instagram_grupo_2" type="url" class="forms form-control" id="ig_cadastro" placeholder="instagram"
+                name="instagram">
+
+              <label for="twitter"></label>
+              <input id="twitter_grupo_2" type="url" class="forms form-control" id="tt_cadastro" placeholder="twitter"
+                name="twitter">
+
+              <label for="foto"></label>
+              <input id="img_grupo_2" required type="url" class="forms form-control" id="img_cadastro" placeholder="foto"
+                name="foto">
+
+
+
+              <button type="submit">atualizar</button>
+            </div>
+          </form>
         </div>
 
 
@@ -146,28 +178,87 @@
 
 </body>
 <script>
-  async function get_tuplas() {
-    columns = ["NOME_ARTISTICO", "BREVE_DESCRICAO", "FACEBOOK",
-    "INSTAGRAM", "TWITTER", "EMAIL", "QUANTIDADE_ARTISTA",
-    "FOTO"];
-    let array = await eel.select("GRUPO_ARTISTICO", columns)();
-    // return clientes
-    let table = document.getElementById("table");
+  async function atualiza_tuplas() {
 
-    if (array.length > 0) {
-      for (var i = 0; i < array.length; i++) {
-        // create a new row
-        var newRow = table.insertRow(table.length);
-        for (var j = 0; j < 1; j++) {
-          // create a new cell
-          var cell = newRow.insertCell(j);
-          // add value to the cell
-          cell.innerHTML = array[i];
-        }
-      }
-    } else {
-      alert("Não há dados armazenados");
+    let name = document.getElementById("nome_grupo_2").value;
+    let email = document.getElementById("email_grupo_2").value;
+    let desc = document.getElementById("descricao_grupo_2").value;
+    let qtd = document.getElementById("qtd_grupo_2").value;
+    let facebook = document.getElementById("facebook_grupo_2").value;
+    facebook = true ? facebook : 'null';
+    let instagram = document.getElementById("instagram_grupo_2").value;
+    instagram = true ? instagram : 'null';
+    let twitter = document.getElementById("twitter_grupo_2").value;
+    twitter = true ? twitter : 'null';
+    let foto = document.getElementById("img_grupo_2").value;
+
+    values = [name, desc, facebook, instagram, twitter, email, qtd, foto];
+
+    columns = ["NOME_ARTISTICO", "BREVE_DESCRICAO", "FACEBOOK",
+      "INSTAGRAM", "TWITTER", "EMAIL", "QUANTIDADE_ARTISTA",
+      "FOTO"
+    ];
+    coluna_condicao = ["NOME_ARTISTICO"];
+    valor_condicao = [name];
+
+    let success = await eel.update("DJ", columns, values, coluna_condicao, valor_condicao)();
+
+    if (success == -1) {
+      alert("Erro ao atualizar o registro, tente novamente");
     }
+
+  }
+  let bool = false;
+  async function get_tuplas() {
+
+    const table = document.getElementById("table");
+    const button = document.getElementById('listar-button');
+    columns = ["Nome Artístico", "Breve Descrição", "Facebook",
+      "Instagram", "Twitter", "E-mail", "Quantidade de Artistas",
+      "Foto(url)"
+    ];
+    if (!bool) {
+
+      let array = await eel.select("GRUPO_ARTISTICO")();
+      const columns_size = columns.length;
+
+      // return clientes
+
+      const header = table.createTHead();
+      const row = header.insertRow(0);
+      for (let i = 0; i < columns_size; i++) {
+        var cell0 = row.insertCell(i);
+        cell0.innerHTML = "<b>" + columns[i] + "<b>";
+      }
+
+
+      let array2 = [];
+
+      if (array.length > 0) {
+        for (var i = 0; i < array.length; i++) {
+          // create a new row
+          var newRow = table.insertRow(table.length);
+          for (var j = 0; j < columns_size; j++) {
+            array2 = array[i].split(',');
+
+            // create a new cell
+            var cell = newRow.insertCell(j);
+            // add value to the cell
+            cell.innerHTML = array2[j];
+          }
+        }
+      } else {
+        alert("Não há dados armazenados");
+      }
+
+      button.innerHTML = 'esconder'
+      bool = true;
+    } else {
+      table.removeChild(table.lastElementChild);
+      button.innerHTML = 'listar'
+      bool = false;
+    }
+
   }
   async function delete_tuplas() {
     let name_delete = document.getElementById("nome_delete_grupo").value;

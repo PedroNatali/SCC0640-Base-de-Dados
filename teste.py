@@ -75,43 +75,43 @@ def executeSQL(filename):
 
 # SELECT
 @eel.expose
-def select(tabela, colunas):
+def select(tabela):
     global connection
     global cursor
 
-    #define o tamanho das clunas
-    tam_colunas = len(colunas)
+    # #define o tamanho das clunas
+    # tam_colunas = len(colunas)
 
-    #numero das colunas
-    nro_cont_colunas = enumerate(colunas) 
+    # #numero das colunas
+    # nro_cont_colunas = enumerate(colunas) 
 
-    cont_colunas = " "
-    for nro, valor in nro_cont_colunas:
-        #Se nao for a ultima das colunas
-        if (nro < tam_colunas - 1):
-            #adiciona o valor ao conteudo das colunas separado por virgula
-            cont_colunas = cont_colunas + str(valor) + ","
-        #Se for a ultima das colunas
-        else:
-            cont_colunas = cont_colunas + str(valor)
+    # cont_colunas = "*"
+    # for nro, valor in nro_cont_colunas:
+    #     #Se nao for a ultima das colunas
+    #     if (nro < tam_colunas - 1):
+    #         #adiciona o valor ao conteudo das colunas separado por virgula
+    #         cont_colunas = cont_colunas + str(valor) + ","
+    #     #Se for a ultima das colunas
+    #     else:
+    #         cont_colunas = cont_colunas + str(valor)
 
     # gerar query com dados do site
-    query = "SELECT " + cont_colunas + " FROM " + tabela
-
+    query = "SELECT *" + " FROM " + tabela
+    # print(query)
     #cria a variavel dos resultados
     resultados = []
     try:
         # tentar executar o comando
         cursor.execute(query)
         resultado = cursor.fetchall()
-
+        # print(resultado)
         # exibir resultado
         print("Select : ")
 
         #Para cada valor em resultado, inserir na variavel de resultados, separando por virgula
         for valor in resultado:
             resultados.append(str(valor))
-            print(valor +  ', ')
+            # print(resultados)
 
         print("\n")
 
@@ -272,12 +272,12 @@ def main():
     connection, cursor = connect()
     
     #dropar todas as tabelas para que nao haja problemas 
-    print("Drop nas tabelas do banco...")
-    executeSQL('drop.sql')
+    # print("Drop nas tabelas do banco...")
+    # executeSQL('drop.sql')
 
     #Inicializando as tabelas
-    print("Cria as tabelas do banco...")
-    executeSQL('esquema-gamexp.sql')
+    # print("Cria as tabelas do banco...")
+    # executeSQL('esquema-gamexp.sql')
 
     #Popula o Banco com tuplas
     # print("Populando o banco de dados com tuplas iniciais...")
@@ -294,7 +294,7 @@ def main():
         print('\n' + "Erro: " + str(e))
 
     # fechar conexao com o banco ao terminar
-    print("Conexão fechada")
+    print("Conexao fechada")
     cursor.close()
 
 
