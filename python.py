@@ -1,7 +1,3 @@
-
- 
- You're using jump to definition to discover and navigate code.
-Learn more or give us feedback
 #!/bin/usr/env python3
 # -*- coding: utf-8 -*-
 
@@ -364,15 +360,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

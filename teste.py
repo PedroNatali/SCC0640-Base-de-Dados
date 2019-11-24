@@ -208,7 +208,7 @@ def delete(tabela, colunas, valores):
 
 # UPDATE
 @eel.expose
-def update(tabela, coluna, valor, col_condicao, val_condicao):
+def update(tabela, coluna, valores, col_condicao, val_condicao):
     global connection
     global cursor
 
@@ -216,7 +216,6 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
 
     #Atribui a variavel nro-valor uma tupla c numero e valor atribuido a cada coluna
     nro_valor_coluna = enumerate(coluna)
-
     #Tamanho da colunna
     tam_coluna = len(coluna)
 
@@ -227,11 +226,11 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
         #se nao chegou no ultimo
         if (nro < tam_coluna - 1):
             #adiciona o valor a variavel de mudancas
-            mudancas = mudancas + str(coluna[nro]) + "=" + "'" + str(valor[nro]) + "'" + ", "
+            mudancas = mudancas + str(coluna[nro]) + "=" + "'" + str(valores[nro]) + "'" + ", "
         #se chegou
         else:
             #adiciona o ultimo valor
-            mudancas = mudancas + str(coluna[nro]) + "=" + "'" + str(valor[nro]) + "'"
+            mudancas = mudancas + str(coluna[nro]) + "=" + "'" + str(valores[nro]) + "'"
 
     # gerar query com dados do site
     query = "UPDATE " + tabela + " SET " + mudancas + " WHERE " + col_condicao[0] + "=" + "'" + val_condicao[0] + "'"
@@ -263,6 +262,34 @@ def update(tabela, coluna, valor, col_condicao, val_condicao):
     # formatar esse resultado
     return resultado
 
+# SELECT SIMPLES (COM APENAS SELECT, FROM E WHERE) DE UMA UNICA TABELA
+@eel.expose
+def simplesSelect(colunas, tabela, condicoes):
+    global connection
+    global cursor
+    
+    col = ""
+    nro_valor_coluna = enumerate(colunas)
+    tam_coluna = len(coluna)
+    for nro,valor in nro_valor_coluna:
+        if(nro < tam_coluna - 1):
+            col = col + str(valor) +","
+        else:
+            col = col + str(valor)
+
+    query = "SELECT " + col + " FROM " + tabela + " WHERE " + condicoes
+
+    try:
+        cursor.execute(query)
+        resultado = 0
+    except Exception as error:
+        print("ERRO: ")
+        print("")
+        print(str(error))
+        resultado = 1  # deu errado, alertar no site
+
+    return resultado
+
 
 def main():
     global connection
@@ -272,16 +299,16 @@ def main():
     connection, cursor = connect()
     
     #dropar todas as tabelas para que nao haja problemas 
-    # print("Drop nas tabelas do banco...")
-    # executeSQL('drop.sql')
+    print("Drop nas tabelas do banco...")
+    executeSQL('drop.sql')
 
     #Inicializando as tabelas
-    # print("Cria as tabelas do banco...")
-    # executeSQL('esquema-gamexp.sql')
+    print("Cria as tabelas do banco...")
+    executeSQL('esquema-gamexp.sql')
 
     #Popula o Banco com tuplas
-    # print("Populando o banco de dados com tuplas iniciais...")
-    # executeSQL('insert.sql')
+    print("Populando o banco de dados com tuplas iniciais...")
+    executeSQL('insert-gamexp.sql')
 
     # abrir interface grafica
     print("Abrindo a interface grafica...")
