@@ -79,22 +79,6 @@ def select(tabela):
     global connection
     global cursor
 
-    # #define o tamanho das clunas
-    # tam_colunas = len(colunas)
-
-    # #numero das colunas
-    # nro_cont_colunas = enumerate(colunas) 
-
-    # cont_colunas = "*"
-    # for nro, valor in nro_cont_colunas:
-    #     #Se nao for a ultima das colunas
-    #     if (nro < tam_colunas - 1):
-    #         #adiciona o valor ao conteudo das colunas separado por virgula
-    #         cont_colunas = cont_colunas + str(valor) + ","
-    #     #Se for a ultima das colunas
-    #     else:
-    #         cont_colunas = cont_colunas + str(valor)
-
     # gerar query com dados do site
     query = "SELECT *" + " FROM " + tabela
     # print(query)
